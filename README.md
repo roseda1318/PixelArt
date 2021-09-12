@@ -6,7 +6,6 @@ Project description (~1 paragraph)
 
 * [Jason Truskowski](https://github.com/NessXToJason/CIS641-HW2-Truskowski 'Jason Truskowski')
 * [Danielle Rose](https://github.com/roseda1318/CIS641-HW2-Rose.git 'Danielle Rose')
-* Member 2 (Role 3, Role 4)
 
 ## Prerequisites
 
