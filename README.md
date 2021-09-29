@@ -19,6 +19,7 @@ Ideally, we will be utilizing a login feature through google to sync past creati
 
 ## Documents
 
+* [View project Requirements here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/blob/master/docs/software_requirements_specification.md)
 * [View project documents here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/tree/master/docs)
 
 ## Prerequisites
