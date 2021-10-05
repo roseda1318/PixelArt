@@ -28,4 +28,4 @@ Ideally, we will be utilizing a login feature through google to sync past creati
 
 ## Run Instructions
 
-* TBA
+* Expo link to run the app will be added in the future.
