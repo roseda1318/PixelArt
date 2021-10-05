@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hopefully this works.!</Text>
+      <Text>This is a test to check commit</Text>
       <StatusBar style="auto" />
     </View>
   );
