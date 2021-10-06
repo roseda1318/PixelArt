@@ -28,8 +28,14 @@ We are thinking about using a login feature through google to sync past creation
 - Test
 - Deploy
 
-# Estimated Timeline
+# Estimated Timeline (updated 10/6/2021)
+- 10/13 - Color picker
+- 10/20 - Pixel grid
+- 11/03 - Shake to undo
+- 12/01 - Dynamic grid size
+- 12/08 - Cloud functionalities
 
+## OLD TIMELINE (for archival purposes)
 - Design requirements (9/22)
 - Basic static Functionality (UI 10/6)
 - Basic colors (10/13)
