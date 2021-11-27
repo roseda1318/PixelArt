@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 
 import {
     StyleSheet,
@@ -6,12 +6,15 @@ import {
     Text,
     Button,
     TouchableOpacity,
-    SafeAreaView
+    SafeAreaView,
+    FlatList,
+    Image
 } from 'react-native';
-
 import { Feather } from '@expo/vector-icons';
-var colorOne = 'FF9225';
 
+//this works in the expo 'snack' feature, and on the web version
+//does not render properly on my android simulator or expo app
+//-- about 20% it will render everything but grid will show 100%
 const home = ({ route, navigation }) => {
     navigation.setOptions({
         headerRight: () => (
@@ -33,238 +36,45 @@ const home = ({ route, navigation }) => {
             </TouchableOpacity>
         ),
     });
-    //do an onPress to pass the color code in for each  row/col? Use state variables for colors in containers
+ 
+    
+    const [dataSource, setDataSource] = useState([]);
+    //temp. color pass
+    var color='000000';
+    //sets the number of columns
+    var col = 5;
+    useState(() => {
+      //sets the number of rows and col to be the same
+        let items = Array.apply(null, Array(col*col)).map((v, i) => {
+            //cusomizable image square setting the text color and background to same color
+            return { id: i,   src: `https://via.placeholder.com/150/${color}/${color}?Text=Down.com`,
+          
+          };
+      });
+      setDataSource(items);
+    }, []);
+  
     return (
-
-        <SafeAreaView style={styles.container}>
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.row}>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.R1_}>
-                    <Text style={styles.text}> </Text>
-                </TouchableOpacity>
-            </View>
-            <View>
-                <Button
-                    title="Color Picker"
-                    onPress={() =>
-                        navigation.navigate('colorpicker')
-                    }
-                />
-            </View>
-        </SafeAreaView>
-
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={dataSource}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={{ flex: 1, flexDirection: 'column', margin: 1 }}
+                //I am sure this is an operator error-- onpress not registering
+                onPress={() =>color = '000fff'}
+          >
+              <Image style={styles.imageThumbnail} source={{ uri: item.src }} />
+               
+            </TouchableOpacity>
+            
+          )}
+          //Setting the number of column
+          numColumns={col}
+          keyExtractor={(item, index) => index}
+        />
+      </SafeAreaView>
     );
-};
+  };
 
 
 const button = {
@@ -278,19 +88,20 @@ const button = {
 };
 
 const styles = StyleSheet.create({
+    
     container: {
         flexDirection: "column", // default
         justifyContent: "flex-start", //default 
         flex: 1,
         margin: 20,
-        backgroundColor: "#FFFFFF"
+    
     },
-    row: {
-        flexDirection: 'row',
-        //flex: 1,
-        //marginBottom: 1, 
-    },
-    currentVal: {
+    imageThumbnail: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+      },
+      currentVal: {
         color: '#fff',
         flex: 1,
         textAlign: 'right',
@@ -298,15 +109,6 @@ const styles = StyleSheet.create({
         marginRight: 10,
         alignSelf: 'center',
 
-    },
-
-    R1_: {
-        ...button,
-        backgroundColor: "#FF0000",
-    },
-    R2_: {
-        ...button,
-        backgroundColor: "#FF0000",
     },
     text: {
         color: "#fff",
