@@ -16,27 +16,32 @@ import { Feather } from '@expo/vector-icons';
 //does not render properly on my android simulator or expo app
 //-- about 20% it will render everything but grid will show 100%
 const home = ({ route, navigation }) => {
-    navigation.setOptions({
-        headerRight: () => (
-            <TouchableOpacity
-                onPress={() =>
-                    navigation.navigate('Home')}>
-                <Text> Login </Text>
+    /* color passing start */
+    useEffect(() => {
+        if (route.params?.newColor) { setColor(route.params.newColor); }
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.navigate('Home')}>
+                    <Text> Login </Text>
 
-                <Feather style={{ marginRight: 10 }} name='log-in' size={24} />
-            </TouchableOpacity>
+                    <Feather style={{ marginRight: 10 }} name='log-in' size={24} />
+                </TouchableOpacity>
 
-        ), headerLeft: () => (
-            <TouchableOpacity
-                onPress={() =>
-                    navigation.navigate('SaveScreen')}>
-                <Text> Save </Text>
+            ), headerLeft: () => (
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.navigate('SaveScreen')}>
+                    <Text> Save </Text>
 
-                <Feather style={{ marginRight: 10 }} name='save' size={24} />
-            </TouchableOpacity>
-        ),
-    });
- 
+                    <Feather style={{ marginRight: 10 }} name='save' size={24} />
+                </TouchableOpacity>
+            ),
+        });
+    }, [route.params?.newColor]);
+    /* color passing end */
+
     
     const [dataSource, setDataSource] = useState([]);
     //temp. color pass
@@ -55,7 +60,8 @@ const home = ({ route, navigation }) => {
     }, []);
   
     return (
-      <SafeAreaView style={styles.container}>
+        <View>
+     <SafeAreaView style={styles.container}>
         <FlatList
           data={dataSource}
           renderItem={({ item }) => (
@@ -73,6 +79,14 @@ const home = ({ route, navigation }) => {
           keyExtractor={(item, index) => index}
         />
       </SafeAreaView>
+     
+      <Button
+          title="Color Picker"
+          onPress={() =>
+              navigation.navigate('colorpicker')
+          }
+      />
+  </View>
     );
   };
 
