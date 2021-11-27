@@ -44,8 +44,10 @@ const home = ({ route, navigation }) => {
 
     
     const [dataSource, setDataSource] = useState([]);
-    //temp. color pass
-    var color='000000';
+    //this takes the draw color and makes the format readable for link
+    var drawColor='#000fff'
+    var color=drawColor.substring(1)
+
     //sets the number of columns
     var col = 5;
     useState(() => {
@@ -83,7 +85,7 @@ const home = ({ route, navigation }) => {
       <Button
           title="Color Picker"
           onPress={() =>
-              navigation.navigate('colorpicker')
+              navigation.navigate('colorpicker', { drawColor })
           }
       />
   </View>
