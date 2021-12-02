@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import { Button, View, StyleSheet } from 'react-native';
+
 //let backgroundColor='#ffffff'
  function getColor() {
     return selectedColor;
  }
-
 export default function Cell(props) {
-
-    const { initalColor, newColor, colorId } = props;
-    const [selectedColor, setSelectedColor]= useState(initalColor);
-   
+    const { initalColor, newColor } = props;
+    const [selectedColor, setSelectedColor, ]= useState(initalColor);
     const cellPress= ()=> {
         setSelectedColor(newColor);
-      
-    }
-
-    function getColor() {
-        return selectedColor;
-    }
+   }
 return(
-<View>
-     
-      <Button
+<View
+    style={{
+        width:50,
+        height:50,
+    }}>
+     <Button
         color={ selectedColor }
-        onPress= {cellPress}
-        
-      />
+        onPress= {cellPress}    
+    >
+  
+    </Button>
     </View>
      
 );
+
 }
+
 
 
