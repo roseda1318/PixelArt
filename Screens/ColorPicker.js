@@ -8,14 +8,19 @@ import {
 } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
-import { ColorPicker } from 'react-native-color-picker';
+import { ColorPicker, TriangleColorPicker, toHsv, fromHsv } from 'react-native-color-picker';
+//import { Slider } from '@react-native-community/slider';
 
 const colorpicker = ({ route, navigation }) => {
     /* color passing start */
-    const initColor = route.params.drawColor;
-    const [newColor, setNewColor] = useState(initColor);
+    const [initColor, setInitColor] = useState();
+    const [newColor, setNewColor] = useState();
 
     useEffect(() => {
+        if (route.params?.newColor) {
+            setInitColor(route.params.newColor);
+            setNewColor(route.params.newColor);
+        }
         navigation.setOptions({
             headerRight: () => (
                 <TouchableOpacity
@@ -35,14 +40,28 @@ const colorpicker = ({ route, navigation }) => {
                 </TouchableOpacity>
             ),
         });
-    });
+    }, [route.params?.newColor]);
+
     /* color passing end */
 
     return (
         <View>
-            <ColorPicker
-                onColorSelected={color => setNewColor(color), alert(`Color selected: ${color}`)}
+            <TriangleColorPicker
                 style={styles.colorpicker}
+                //defaultColor={initColor}
+                // FIXME: Currently not working with initColor
+                oldColor={'blue'}
+                // TODO: Pass back to home screen here
+                onOldColorSelected={
+                    color => alert(`Color selected: ${color}`)
+                    // color => setNewColor(color),
+                    // navigation.navigate('Home', { newColor })
+                }
+                onColorSelected={
+                    // color => setNewColor(color),
+                    // navigation.navigate('Home', { newColor })
+                    color => alert(`Color selected: ${color}`)
+                }
             />
         </View>
     )
