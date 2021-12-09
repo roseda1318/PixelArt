@@ -16,13 +16,20 @@ import Cell, { getColor } from '../Components/button';
 //does not render properly on my android simulator or expo app
 //-- about 20% it will render everything but grid will show 100%
 const home = ({ route, navigation }) => {
+  // TODO: These variable names may be confusing, refactor later
   const [newColor, setNewColor] = useState('');
-  var drawColor = 'black';
+  var drawColor = 'white';
   const [dataSource, setDataSource] = useState([]);
+  var col = 8;
 
   /* color passing start */
   useEffect(() => {
     if (route.params?.newColor) { setNewColor(route.params.newColor); }
+    else if (route.params?.color) {
+      setNewColor(route.params.color);
+      console.log(`${newColor}`)
+    }
+
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -43,12 +50,7 @@ const home = ({ route, navigation }) => {
         </TouchableOpacity>
       ),
     });
-  }, [route.params?.newColor]);
-  
-  //sets the number of columns
-  var col = 8;
-  useState(() => {
-    //sets the number of rows and col to be the same
+
     let items = Array.apply(null, Array(col * col)).map((v, i) => {
 
       return {
@@ -57,7 +59,9 @@ const home = ({ route, navigation }) => {
       };
     });
     setDataSource(items);
-  }, []);
+
+  }, [route.params?.newColor, route.params?.color]);
+  
   return (
     <View>
       <SafeAreaView style={styles.container}>

@@ -13,33 +13,34 @@ import { ColorPicker, TriangleColorPicker, toHsv, fromHsv } from 'react-native-c
 
 const colorpicker = ({ route, navigation }) => {
     /* color passing start */
-    const [initColor, setInitColor] = useState();
-    const [newColor, setNewColor] = useState();
+    const [initColor, setInitColor] = useState('');
+    const [newColor, setNewColor] = useState('');
 
     useEffect(() => {
         if (route.params?.newColor) {
             setInitColor(route.params.newColor);
             setNewColor(route.params.newColor);
         }
-        navigation.setOptions({
-            headerRight: () => (
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('Home')}>
-                    <Text> Cancel </Text>
+        // NOTE: These are handled by color picker or default back button now
+        // navigation.setOptions({
+        //     headerRight: () => (
+        //         <TouchableOpacity
+        //             onPress={() =>
+        //                 navigation.navigate('Home')}>
+        //             <Text> Cancel </Text>
 
-                    <Feather style={{ marginRight: 10 }} name='home' size={24} />
-                </TouchableOpacity>
-            ), headerLeft: () => (
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate('Home', { newColor })}>
-                    <Text> Save </Text>
+        //             <Feather style={{ marginRight: 10 }} name='home' size={24} />
+        //         </TouchableOpacity>
+        //     // ), headerLeft: () => (
+        //     //     <TouchableOpacity
+        //     //         onPress={() =>
+        //     //             navigation.navigate('Home', { newColor })}>
+        //     //         <Text> Save </Text>
 
-                    <Feather style={{ marginRight: 10 }} name='save' size={24} />
-                </TouchableOpacity>
-            ),
-        });
+        //     //         <Feather style={{ marginRight: 10 }} name='save' size={24} />
+        //     //     </TouchableOpacity>
+        //     // ),
+        // });
     }, [route.params?.newColor]);
 
     /* color passing end */
@@ -50,17 +51,17 @@ const colorpicker = ({ route, navigation }) => {
                 style={styles.colorpicker}
                 //defaultColor={initColor}
                 // FIXME: Currently not working with initColor
-                oldColor={'blue'}
-                // TODO: Pass back to home screen here
+                oldColor={'white'}
+                Pass back to home screen here
                 onOldColorSelected={
-                    color => alert(`Color selected: ${color}`)
-                    // color => setNewColor(color),
-                    // navigation.navigate('Home', { newColor })
+                    //color => setNewColor(color),
+                    //color => alert(`Color selected: ${color}, new color: ${newColor}`),
+                    color => navigation.navigate('Home', { color })
                 }
                 onColorSelected={
-                    // color => setNewColor(color),
-                    // navigation.navigate('Home', { newColor })
-                    color => alert(`Color selected: ${color}`)
+                    //color => setNewColor(color),
+                    //color => alert(`Color selected: ${color}, new color: ${newColor}`),
+                    color => navigation.navigate('Home', { color })
                 }
             />
         </View>
