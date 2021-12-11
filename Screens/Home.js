@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
+  ImageBackground,
   Text,
   Button,
   TouchableOpacity,
@@ -30,26 +31,7 @@ const home = ({ route, navigation }) => {
       console.log(`${newColor}`)
     }
 
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Home')}>
-          <Text> Login </Text>
-
-          <Feather style={{ marginRight: 10 }} name='log-in' size={24} />
-        </TouchableOpacity>
-
-      ), headerLeft: () => (
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('SaveScreen')}>
-          <Text> Save </Text>
-
-          <Feather style={{ marginRight: 10 }} name='save' size={24} />
-        </TouchableOpacity>
-      ),
-    });
+    
 
     let items = Array.apply(null, Array(col * col)).map((v, i) => {
 
@@ -63,22 +45,23 @@ const home = ({ route, navigation }) => {
   }, [route.params?.newColor, route.params?.color]);
   
   return (
+    <ImageBackground 
+        source={"https://cdn.pixabay.com/photo/2013/12/05/20/38/concrete-223838_1280.jpg"}
+         resizeMode="cover" style={styles.image}>
     <View>
+     
+      
       <SafeAreaView style={styles.container}>
         <FlatList
           data={dataSource}
           renderItem={({ item }) => (
-            <TouchableOpacity style={{
-              flex: 1, flexDirection: 'column', margin: 1
-            }}
-            //I am sure this is an operator error-- onpress not registering
-                //How do I re-render without losing everything?
-                onPress={() =>color = '#cc8899'}
+            <View  style={styles.cells}
+              onPress={() =>drawColor = '#cc8899'}
             >
               <Cell initalColor={drawColor} newColor={newColor} />
               {/* <Image style={styles.imageThumbnail} source={{ uri: item.src }} /> */}
 
-            </TouchableOpacity>
+            </View>
 
           )}
           //Setting the number of column
@@ -86,16 +69,18 @@ const home = ({ route, navigation }) => {
           keyExtractor={(item, index) => index}
         />
       </SafeAreaView>
-
+     
       <Button
         title="Color Picker"
+        color={ newColor }
         onPress={() => {
-          //console.log(dataSource)
+          
           navigation.navigate('colorpicker', { newColor })
         }
         }
       />
     </View>
+     </ImageBackground>
   );
 };
 
@@ -110,10 +95,18 @@ const styles = StyleSheet.create({
     */
     // margin: 20,
     flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexDirection: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center'
 
+  },
+  cells: {
+   
+    aspectRatio: 1,
+    flexDirection: "column", // default
+    justifyContent: "center", //default 
+    flex: 1,
+   
   },
   imageThumbnail: {
     justifyContent: 'center',
@@ -132,6 +125,10 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
     fontSize: 35,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
   },
 });
 

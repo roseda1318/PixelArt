@@ -12,22 +12,27 @@ export default function Cell(props) {
         setSelectedColor(newColor);
    }
 return(
-<View
-    style={{
-        width:50,
-        height:50,
-    }}>
+<View  styles= {styles.cells}>
      <Button
-        color={ selectedColor }
+        title= '     '
+       color={ selectedColor }
         onPress= {cellPress}    
     >
-  
+    
     </Button>
     </View>
      
 );
 
-}
+}const styles = StyleSheet.create({
+
+    cells: {
+      height: 1000,
+      width: 1000,
+      aspectRatio: 1 
+    }
+})
+
 
 
 
