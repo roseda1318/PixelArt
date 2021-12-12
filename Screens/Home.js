@@ -6,22 +6,19 @@ import {
   ImageBackground,
   Text,
   Button,
-  TouchableOpacity,
   SafeAreaView,
   FlatList,
   Image
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import Cell, { getColor } from '../Components/button';
-//this works in the expo 'snack' feature, and on the web version
-//does not render properly on my android simulator or expo app
-//-- about 20% it will render everything but grid will show 100%
+
+import Cell from '../Components/button';
+
 const home = ({ route, navigation }) => {
   // TODO: These variable names may be confusing, refactor later
   const [newColor, setNewColor] = useState('');
-  var drawColor = 'white';
+  var drawColor = '#ffffff';
   const [dataSource, setDataSource] = useState([]);
-  var col = 8;
+  var col = 30;
 
   /* color passing start */
   useEffect(() => {
@@ -45,13 +42,23 @@ const home = ({ route, navigation }) => {
   }, [route.params?.newColor, route.params?.color]);
   
   return (
-    <ImageBackground 
-        source={"https://cdn.pixabay.com/photo/2013/12/05/20/38/concrete-223838_1280.jpg"}
-         resizeMode="cover" style={styles.image}>
+    
+    
     <View>
+      <Image source={require('../Components/pixelArt.jpg')} 
+        style= {{width: "30%", height: "30%" }}
+        resizeMode="contain"
+        ImageBackground= "#000000"/>
+        
+      <ImageBackground 
+        source={require('../Components/background.jpg')}
+        //image source: https://cdn.pixabay.com/photo/2013/12/05/20/38/concrete-223838_1280.jpg
+          style={styles.image}>
      
-      
+    
       <SafeAreaView style={styles.container}>
+      
+
         <FlatList
           data={dataSource}
           renderItem={({ item }) => (
@@ -68,9 +75,7 @@ const home = ({ route, navigation }) => {
           numColumns={col}
           keyExtractor={(item, index) => index}
         />
-      </SafeAreaView>
-     
-      <Button
+        <Button
         title="Color Picker"
         color={ newColor }
         onPress={() => {
@@ -79,8 +84,12 @@ const home = ({ route, navigation }) => {
         }
         }
       />
+      </SafeAreaView>
+     
+      
+      </ImageBackground>
     </View>
-     </ImageBackground>
+   
   );
 };
 
@@ -93,10 +102,10 @@ const styles = StyleSheet.create({
       justifyContent: "flex-start", //default 
       flex: 1,
     */
-    // margin: 20,
-    flex: 2,
+     margin: 20,
+    flex: 1,
     flexDirection: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center'
 
   },
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     flexDirection: "column", // default
     justifyContent: "center", //default 
-    flex: 1,
+ 
    
   },
   imageThumbnail: {
@@ -113,23 +122,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
   },
-  currentVal: {
-    color: '#fff',
-    flex: 1,
-    textAlign: 'right',
-    fontSize: 50,
-    marginRight: 10,
-    alignSelf: 'center',
-
-  },
-  text: {
+   text: {
     color: "#fff",
     fontSize: 35,
   },
-  image: {
-    flex: 1,
-    justifyContent: "center"
-  },
+ 
 });
 
 export default home;

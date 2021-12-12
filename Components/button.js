@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Button, View, StyleSheet } from 'react-native';
 
-//let backgroundColor='#ffffff'
- function getColor() {
-    return selectedColor;
- }
+
 export default function Cell(props) {
     const { initalColor, newColor } = props;
     const [selectedColor, setSelectedColor, ]= useState(initalColor);
@@ -14,7 +11,7 @@ export default function Cell(props) {
 return(
 <View  styles= {styles.cells}>
      <Button
-        title= '     '
+      
        color={ selectedColor }
         onPress= {cellPress}    
     >
