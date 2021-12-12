@@ -49,9 +49,9 @@ const colorpicker = ({ route, navigation }) => {
         <View>
             <TriangleColorPicker
                 style={styles.colorpicker}
-                //defaultColor={initColor}
+                defaultColor={"#ffffff"}
                 // FIXME: Currently not working with initColor
-                oldColor={'white'}
+                oldColor={newColor}
                 Pass back to home screen here
                 onOldColorSelected={
                     //color => setNewColor(color),

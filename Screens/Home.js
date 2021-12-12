@@ -13,7 +13,7 @@ import {
 import Cell from '../Components/button';
 
 const home = ({ route, navigation }) => {
-  const [newColor, setNewColor] = useState('');
+  const [newColor, setNewColor] = useState('#cc8899');
   var drawColor = '#ffffff';
   const [dataSource, setDataSource] = useState([]);
   var col = 30;
