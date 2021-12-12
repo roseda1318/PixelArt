@@ -11,8 +11,7 @@ export default function Cell(props) {
 return(
 <View  styles= {styles.cells}>
      <Button
-      
-       color={ selectedColor }
+        color={ selectedColor }
         onPress= {cellPress}    
     >
     
