@@ -11,13 +11,16 @@ This application allows the users to express their creativity through pixelized 
 * [Jason Truskowski](https://github.com/NessXToJason/CIS641-HW2-Truskowski 'Jason Truskowski')
 * [Danielle Rose](https://github.com/roseda1318/CIS641-HW2-Rose.git 'Danielle Rose')
 
+## Final Deliverable Document
+
+* [View project SRS and final deliverables here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/blob/master/docs/software_requirements_specification_final.md)
+
 ## Artifacts
 
 * [View project artifacts here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/tree/master/artifacts)
 
 ## Documents
 
-* [View project requirements here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/blob/master/docs/software_requirements_specification.md)
 * [View project documents here](https://github.com/NessXToJason/GVSU-CIS641-TEAM657/tree/master/docs)
 
 ## Run Instructions
